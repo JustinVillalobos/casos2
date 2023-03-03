@@ -1,0 +1,8 @@
+
+#Eliminar indexacion de archivos en folder
+#para seguridad de que ningun cliente accese
+#a archivos que no debe ver
+Options -Indexes
+
+
+

