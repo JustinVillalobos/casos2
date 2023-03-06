@@ -24,7 +24,9 @@
         <link href="{{ URL::asset('css/home.css'); }}" rel="stylesheet">
         <link href="{{ URL::asset('plugins/iconos/style.css'); }}" rel="stylesheet">
         <!-- Styles -->
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;600;700;800;900&family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
         
         <style>
 .google-translate {
@@ -59,7 +61,7 @@ body {
     <body class="antialiased">
         
         <div class="flex-container body" style="padding: 0px;">
-           <div class="row" style="    width: 100%;">
+           <div class="row" style="    ">
                 
                 <div class="col-sm-12" style="    padding: 0px;">
                     @section('content')
@@ -77,7 +79,7 @@ body {
             <div id="particleCanvas-Blue"></div>
             <div id="particleCanvas-White"></div>
         </div>
-        <script src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+       
         <script src="{{ URL::asset('plugins/sweetalert2/dist/sweetalert2.all.min.js'); }}"></script>
         <script src="https://code.createjs.com/easeljs-0.7.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
@@ -93,13 +95,7 @@ body {
         <script src="{{ URL::asset('js/spin.js'); }}"></script>
         <script src="{{ URL::asset('js/home.js'); }}"></script>
     <script>
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                {pageLanguage: 'en'},
-                'google_translate_element'
-            );
-            $('#google_translate_element select').addClass("form-select");
-        }
+        
     </script>
     </body>
 </html>

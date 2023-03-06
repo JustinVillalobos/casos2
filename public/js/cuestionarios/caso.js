@@ -95,7 +95,7 @@ function showDataMovil(id){
         clicks.push(id);
     }
     console.log(clicks);
-    if(clicks.length>=3){
+    if(clicks.length>=1){
         //let swiper2 = document.querySelector('.swiper').swiper;
         //swiper2.slideNext();
         isValidNext=true;
@@ -124,7 +124,7 @@ function showData(id){
         clicks.push(id);
     }
     console.log(clicks);
-    if(clicks.length>=3){
+    if(clicks.length>=1){
         //let swiper2 = document.querySelector('.swiper').swiper;
         //swiper2.slideNext();
         isValidNext=true;
@@ -158,12 +158,12 @@ function deletePrevious(index){
                 $(".div-res-btn .btn-res"+preguntas[i].pregunta).prop('disabled',true);
                 isValidNext=false;
                 $(".spinnerDiv").css("display","none");
-                $(".div-slide-"+preguntas[i].pregunta).css("display","none");
+                $(".div-slide-"+preguntas[i].pregunta).css("display","block");
                 $(".div-info-add-"+preguntas[i].pregunta).css("display","block");
                 $('.div-punt').fadeOut(); //fade out//fade in div
                 $(".div-punt-"+preguntas[i].pregunta).fadeOut();
                 $(".div-det-"+preguntas[i].pregunta).fadeOut();
-                $(".text-response").removeClass("bg-primary");
+                $(".text-response").removeClass("bg-primary2");
                 respuesta=0;
                 isReponse=false;
                 console.log("Remove index ",i,preguntas);
@@ -204,12 +204,12 @@ function deletePresent(){
                         
                        
                         $(".div-res-btn .btn-res"+preguntas[i].pregunta).prop('disabled',true);
-                            $(".div-slide-"+preguntas[i].pregunta).css("display","none");
+                            $(".div-slide-"+preguntas[i].pregunta).css("display","block");
                             $(".div-info-add-"+preguntas[i].pregunta).css("display","block");
                             $('.div-punt').fadeOut(); //fade out//fade in div
                             $(".div-punt-"+preguntas[i].pregunta).fadeOut();
                             $(".div-det-"+preguntas[i].pregunta).fadeOut();
-                            $(".text-response").removeClass("bg-primary");
+                            $(".text-response").removeClass("bg-primary2");
                             console.log(preguntas[0],preguntas[1]);
                             preguntas=preguntas.filter((res)=>{return res.pregunta!=i});
                             console.log(preguntas,i);
@@ -259,6 +259,7 @@ function prev(){
         }
         if(indice==0){
             isValidNext=true;
+            $(".spin").css("display","none");
         }
         if(indice<0){
             indice=0;
@@ -287,40 +288,26 @@ function confettiAnimacionDemo(){
 }
 function setCards(preguntas){
     let dom="<div class='row'>";
-   /* preguntas.forEach((element,i) => {
-        dom+="<div class='col-sm-3 d-flex justify-content-center' style='margin-top:15px;'>";
-            dom+="<div class='card-custom'>";
-            let it=i+1;
-            let index=it+"";
-            if(it<9){
-                index="0"+it;
-            }
-            let resp="A";
-            switch(element.respuesta){
-                case 0:
-                    resp="A";
-                    break;
-                case 1:
-                    resp="B";
-                    break;
-                case 2:
-                    resp="C";
-                    break;
-                case 3:
-                    resp="D";
-                    break;
-            }
-                dom+="<div class='icon-card-correct bg-primary'>"+resp+"</div>";
-                dom+="<label class='lbl-card'> Pregunta "+index+"</label>";
+
+         dom+="<div class='col-sm-12 d-flex align-items-center card-custom-final cusstom-d' style=' height: 80vh;position:absolute;z-index:2'>";
+           dom+="<div class='row'>";
+            dom+="<div class='col-sm-12'>";
+                dom+="<h1 style='margin:0;font-size:36px;'>¡Gracias por Participar!</h1>";
             dom+="</div>";
+            dom+="<div class='col-sm-12 d-flex justify-content-center content-btn'>";        
+                dom+="<button class='btn btn-primary-2 text-white btn-finally' onClick='reinitQuest()' style='width:150px;height:75px;font-size:16px'>VOLVER AL INICIO</button>";
+            dom+="</div>";
+           dom+="</div>";
         dom+="</div>";
-    });*/
-        dom+="<div class='col-sm-12 d-flex justify-content-center card-custom-final' style='margin-top:15px;'>";
-            dom+="<h1 style='margin:0;font-weight:bold;'>¡Gracias por Participar!</h1>";
+        dom+="<div class='col-sm-12 d-flex justify-content-center card-custom-final  custtom-f' style='margin-top:15px; position:absolute'>";
+            dom+="<img src='"+$("#final").attr('src')+"' style='width:100%'>";
         dom+="</div>";
-    
     dom+="</div>";
+    
     return dom;
+}
+function reinitQuest(){
+    window.location ="./caso_estudio?code="+$("#idCuestionario").val();
 }
 function next(){
     isReponse=false;
@@ -337,18 +324,30 @@ function next(){
     clearInterval(intervalGrap);
     intervalGrap =null;
     if(isValidNext && indice<cantidad){
+        
         let swiper2 = document.querySelector('.swiper').swiper;
         swiper2.slideNext();
         $(".control").css("pointer-events","all");
         $(".spinnerDiv").css("display","none");
         if(indice!=0){
-            let i=indice-1;
-            $(".div-res-btn .btn-res"+preguntas[i].pregunta).prop('disabled',true);
-        $(".spinnerDiv").css("display","none");
-        $(".div-info-add-"+preguntas[i].pregunta).css("display","block");
-        $(".div-slide-"+preguntas[i].pregunta).css("display","none");
-        $('.div-punt').fadeOut(); //fade out//fade in div
-        $(".div-punt-"+preguntas[i].pregunta).fadeOut();
+            let i=indice;
+            $(".div-res-btn .btn-res"+i).prop('disabled',true);
+            $(".spinnerDiv").css("display","none");
+            $(".div-info-add-"+i).css("display","block");
+            $(".div-slide-"+i).css("display","block");
+        
+            $('.div-punt').fadeOut(); //fade out//fade in div
+            $(".div-punt-"+i).fadeOut();
+            console.log("Volver visible");
+        }else{
+            let i=indice;
+            $(".div-res-btn .btn-res"+0).prop('disabled',true);
+            $(".spinnerDiv").css("display","none");
+            $(".div-info-add-0").css("display","block");
+            $(".div-slide-0").css("display","block");
+        
+            $('.div-punt').fadeOut(); //fade out//fade in div
+            $(".div-punt-0").fadeOut();
         }
         
         indice++;
@@ -358,20 +357,28 @@ function next(){
 
         let html="";
         html = setCards(preguntas);
-        $(".final-col").html(html);
+        $("#body-slide").html(html);
+        localStorage.setItem("preguntasContestadas","[]");
+        localStorage.setItem('usuario',"");
+        localStorage.setItem('codigo',"");
+        localStorage.setItem("randomCodigo",""); 
+        $(".control").css("pointer-events","none");
+        $(".spinnerDiv").css("display","none");
         console.log($(".img-title").attr("src"));
         //$(".card-custom-final").html();
         let swiper2 = document.querySelector('.swiper').swiper;
         swiper2.slideNext();
         if(indice!=0){
+            console.log("Volver 2");
             let i=indice-1;
-            $(".div-res-btn .btn-res"+preguntas[i].pregunta).prop('disabled',true);
-        $(".spinnerDiv").css("display","none");
-        $(".div-info-add-"+preguntas[i].pregunta).css("display","block");
-        $(".div-slide-"+preguntas[i].pregunta).css("display","none");
-        $('.div-punt').fadeOut(); //fade out//fade in div
-        $(".div-punt-"+preguntas[i].pregunta).fadeOut();
-        $("button").css("display","none");
+                $(".div-res-btn .btn-res"+preguntas[i].pregunta).prop('disabled',true);
+            $(".spinnerDiv").css("display","none");
+            $(".div-info-add-"+preguntas[i].pregunta).css("display","block");
+            $(".div-slide-"+preguntas[i].pregunta).css("display","block");
+            
+            $('.div-punt').fadeOut(); //fade out//fade in div
+            $(".div-punt-"+preguntas[i].pregunta).fadeOut();
+            $("button").css("display","none");
         }
         indice++;
         localStorage.setItem("preguntasContestadas","[]");
@@ -396,8 +403,8 @@ function response(pregunta,res){
         return;
     }
     
-     $(".text-response").removeClass("bg-primary");
-     $(".response"+pregunta+""+res).addClass("bg-primary");
+     $(".text-response").removeClass("bg-primary2");
+     $(".response"+pregunta+""+res).addClass("bg-primary2");
      $(".div-res-btn .btn-res"+pregunta).prop('disabled',false);
      respuesta=res;
    
@@ -428,16 +435,22 @@ function graphRefresh(p,pregunta){
             url:'./refreshData',
             data:{puntaje:p},
             success:function(data){
-                let json = JSON.parse(data);
-                if(json!=false){
-                 
-                    let l = labels(json.pr[0].respuestas);
-                    let d = getData(json.pr[0].puntajes_preguntas,json.pr[0].respuestas);
-                    let data_chart = {labels:l,data:d};
-                    let pre = json.preguntas;
-                    //chart(data_chart,0,pre,pregunta);
-                    numeroPregunta++;
+               
+                try {
+                    let json = JSON.parse(data);
+                    if(json!=false){
+                    
+                        let l = labels(json.pr[0].respuestas);
+                        let d = getData(json.pr[0].puntajes_preguntas,json.pr[0].respuestas);
+                        let data_chart = {labels:l,data:d};
+                        let pre = json.preguntas;
+                        //chart(data_chart,0,pre,pregunta);
+                        numeroPregunta++;
+                    }
+                } catch (error) {
+                    
                 }
+                
             }
         });
     }, 1000);
@@ -464,7 +477,7 @@ function responseQuestion(pregunta,solucion){
             $(".spin").css("display","block");
             setTimeout(() => {
                 $(".spin").css("display","none");
-            }, 1500);
+            }, 1000);
            });
         preguntas.push(p);
     }else{
@@ -480,7 +493,7 @@ function responseQuestion(pregunta,solucion){
             $(".spin").css("display","block");
             setTimeout(() => {
                 $(".spin").css("display","none");
-            }, 1500);
+            }, 1000);
         });
         p ={pregunta:pregunta,respuesta:respuesta,isCorrecto:false,codigo: localStorage.getItem('codigo')};
         preguntas.push(p);

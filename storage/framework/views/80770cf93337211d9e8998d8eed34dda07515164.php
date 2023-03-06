@@ -50,7 +50,7 @@
                                         <div class="col-sm-12 details-div" >
                                             <div class="row" style="width: 95%;">
                                                 <div class="col-sm-9 definiciones">
-                                                    <strong>Información Adicional:</strong><?php echo $p->definiciones; ?>
+                                                    <strong>Información Adicional</strong><?php echo $p->definiciones; ?>
 
                                                 </div>
                                                 

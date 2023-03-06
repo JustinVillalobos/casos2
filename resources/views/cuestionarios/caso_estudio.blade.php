@@ -9,7 +9,7 @@
  
 </style>
  <canvas id="projector">Your browser does not support the Canvas element.</canvas>
- <div class="flex-container custom" style="width:100%;height:100vh;padding-left:25px;">
+ <div class="flex-container custom" style="width:100%;height:100vh;">
     <div class="header d-flex justify-content-start header2" style="margin-top:55px;">
       <div class="row" style="width: 100%;"> 
         <div class="col-sm-12 d-flex justify-content-center">
@@ -39,19 +39,12 @@
     <div class="" id="case" style="display:none;">
         <div class="header">
            <div class="row">
-                @if($user->typeuser!=1)
-                <div class="col-sm-3 col-md-2 col-lg-2">
-                    <img src="{{ URL::asset('assets/logo.png'); }}" style="width:200px;height:90px;"/>
+               <div class="col-sm-3  col-md-3 col-lg-3"></div>
+               <div class="col-sm-1  col-md-1 col-lg-1"></div>
+                <div class="col-sm-4 col-md-4 col-lg-4 d-flex justify-content-center" style="padding-left: 35px;">
+                    <img src="{{ URL::asset('assets/logo-servier.jpeg'); }}" style="width:200px;height:67px;"/>
                 </div>
-                @endif
-                @if($user->typeuser==1)
-                <div class="col-sm-3  col-md-2 col-lg-2">
-                    
-                    <img src="{{ URL::asset(''.$user->img); }}" style="width:200px;max-height:90px;"/>
-                   
-                </div>
-                @endif
-                <div class="col-sm-6  col-md-7 col-lg-7"></div>
+                <div class="col-sm-1  col-md-1 col-lg-1"></div>
                 <div class="col-sm-3 col-md-3 col-lg-3 d-flex justify-content-end align-items-center" style="padding-right:25px;">
                 <div class=" control2 dropdown" >
                     <div class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-music"></i></div>
@@ -75,14 +68,14 @@
                 <div class='swiper-bg'>
 
                 </div>
-                <div class='swiper-fe'>
+                <div class='swiper-fe' style="  background-repeat: no-repeat;background-size: cover!important;  height: 91vh;background:url({{ URL::asset('assets/bg.jpeg'); }})">
                    <div class="row swip">
-                        <div class="col-sm-4 d-flex align-items-center">
+                        <div class="col-sm-4 d-flex align-items-center clinico">
                             <div class="row row-data-info" style="height: 75vh;">
-                                <div class="col-sm-12 d-flex justify-content-start" style="padding-top:0px;padding-left:55px;">
-                                    <h3 id="title"><i class="fa fa-user-md text-primary" aria-hidden="true"></i>Net<span class="text-primary2">Challenge</span></h3>
+                                <div class="col-sm-12 d-flex justify-content-start" style="padding-top:0px;padding-left:65px;">
+                                    <h3 id="title"><i class="fa fa-user-md text-primary2" aria-hidden="true"></i>Net<span class="text-primary2">Challenge</span></h3>
                                 </div>
-                                <div class="col-sm-12 d-flex justify-content-start c-i" style="margin-top:5%;width:250px;height: 250px;    padding-left: 50px;">
+                                <div class="col-sm-12 d-flex justify-content-start c-i" style="margin-top:5%;width:250px;height: 250px;    padding-left: 60px;">
                                     <?php $img=strlen($cuestionario->imagen);?>
                                     @if($img < 3)
                                         <img src="{{ URL::asset('assets/avatars/avatar'.$cuestionario->imagen.'.png'); }}" style="width:250px;height: 250px;"/>
@@ -92,10 +85,10 @@
                                     @endif
                                 </div>
                                 <div class="row">
-                                    <div class="col-sm-12 d-flex justify-content-start moreInfoTitle" style="margin-top:5%;padding-left:65px;">
+                                    <div class="col-sm-12 d-flex justify-content-start moreInfoTitle" style="margin-top:5%;padding-left:75px;">
                                         <label><strong>Información Adicional:</strong></label>
                                     </div>
-                                    <div class="col-sm-12 d-flex justify-content-start moreInfo" style="padding-top:0x;padding-left:65px;">
+                                    <div class="col-sm-12 d-flex justify-content-start moreInfo" style="padding-top:0x;padding-left:75px;">
                                         <label><strong>Género:</strong>
                                             @if($cuestionario->genero=="0")
                                                 Hombre
@@ -106,17 +99,17 @@
 
                                         </label>
                                     </div>
-                                    <div class="col-sm-12 d-flex justify-content-start moreInfo" style="padding-top:0px;padding-left:65px;">
+                                    <div class="col-sm-12 d-flex justify-content-start moreInfo" style="padding-top:0px;padding-left:75px;">
                                         <label><strong>Edad:</strong>{{$cuestionario->edad}}</label>
                                     </div>
-                                    <div class="col-sm-12 d-flex justify-content-start moreInfo" style="padding-top:0px;padding-left:65px;">
+                                    <div class="col-sm-12 d-flex justify-content-start moreInfo" style="padding-top:0px;padding-left:75px;">
                                         <label><strong>Trabajo:</strong>{{$cuestionario->trabajo}}</label>
                                     </div>
                                     @if($cuestionario->genero=="0")
                                                 
                                             @endif
                                             @if($cuestionario->genero!="0")
-                                            <div class="col-sm-12 d-flex justify-content-start moreInfo" style="padding-top:0px;padding-left:60px;">
+                                            <div class="col-sm-12 d-flex justify-content-start moreInfo" style="padding-top:0px;padding-left:70px;">
                                                 <label><strong>¿Tiene Hijos?:</strong>
                                                     @if($cuestionario->hijos=="" || $cuestionario->hijos=="0")
                                                         No
@@ -143,26 +136,15 @@
                                     <div class="row div-row-slid-init d-flex justify-content-center" style="">
                                        
                                        <div class="col-sm-3">
-                                           <button class="btn btn-primary btn-hecho" onclick="showData(1)">Antecedentes Personales y Familiares</button>
+                                           <button class="btn btn-primary btn-hecho" onclick="showData(1)">INFORMACIÓN GENERAL DEL PACIENTE</button>
                                            <div class="div-icon data1" id="data1" style="display:none">
                                                <span class="icon-check "><i class="fa fa-check-circle text-success"></i></span>
                                            </div>
                                        </div>
-                                       <div class="col-sm-3">
-                                           <button class="btn btn-primary btn-hecho" onclick="showData(2)">Motivo De Consulta, Diagnóstico y Tratamiento Inicial</button>
-                                           <div class="div-icon data2" id="data2" style="display:none">
-                                               <span class="icon-check "><i class="fa fa-check-circle text-success"></i></span>
-                                           </div>
-                                       </div>
-                                       <div class="col-sm-3">
-                                           <button class="btn btn-primary btn-hecho" onclick="showData(3)">Evolución y Tratamientos Posteriores</button>
-                                           <div class="div-icon data3" id="data3" style="display:none">
-                                               <span class="icon-check "><i class="fa fa-check-circle text-success"></i></span>
-                                           </div>
-                                       </div>
+                                       
                                    </div>
                                    <div class="row card-data show0" id="show1" style="margin-top: 10%;display:none" >
-                                       <div class="col-sm-12"><h3 class="subtitle">Antecedentes Personales y Familiares</h3></div>
+                                      
                                        @if($cuestionario->seccion==1)
                                        <div class="col-sm-12 bodyData">
                                            <div class="row">
@@ -174,6 +156,9 @@
                                        @if($cuestionario->seccion!=1)
                                            <div class="col-sm-12 bodyData">{!! $cuestionario->antecedentesPersonales !!}</div>
                                        @endif
+                                       <div class="col-sm-3">
+                                            <div class="line-custom-body"></div>
+                                       </div>
                                        @if($cuestionario->seccion==2)
                                        <div class="col-sm-12 bodyData">
                                            <div class="row">
@@ -185,10 +170,9 @@
                                        @if($cuestionario->seccion!=2)
                                            <div class="col-sm-12 bodyData">{!! $cuestionario->antecedentesFamiliares !!}</div>
                                        @endif
-                                   </div>
-                                   
-                                   <div class="row card-data show2" id="show2" style="margin-top: 10%;display:none">
-                                       <div class="col-sm-12"><h3 class="subtitle">Motivo De Consulta, Diagnóstico y Tratamiento Inicial</h3></div>
+                                       <div class="col-sm-3">
+                                            <div class="line-custom-body"></div>
+                                       </div>
                                        @if($cuestionario->seccion==3)
                                        <div class="col-sm-12 bodyData">
                                            <div class="row">
@@ -200,9 +184,9 @@
                                        @if($cuestionario->seccion!=3)
                                            <div class="col-sm-12 bodyData">{!! $cuestionario->motivoConsulta !!}</div>
                                        @endif
-                                   </div>
-                                   <div class="row card-data show3" id="show3" style="margin-top: 10%;display:none">
-                                       <div class="col-sm-12"><h3 class="subtitle">Evolución y Tratamientos Posteriores</h3></div>
+                                       <div class="col-sm-3">
+                                            <div class="line-custom-body"></div>
+                                       </div>
                                        @if($cuestionario->seccion==4)
                                        <div class="col-sm-12 bodyData">
                                            <div class="row">
@@ -215,18 +199,27 @@
                                            <div class="col-sm-12 bodyData">{!! $cuestionario->revision !!}</div>
                                        @endif
                                    </div>
+                                   
+                                   <div class="row card-data show2" id="show2" style="margin-top: 10%;display:none">
+                                       <div class="col-sm-12"><h3 class="subtitle">Motivo De Consulta, Diagnóstico y Tratamiento Inicial</h3></div>
+                                      
+                                   </div>
+                                   <div class="row card-data show3" id="show3" style="margin-top: 10%;display:none">
+                                       <div class="col-sm-12"><h3 class="subtitle">Evolución y Tratamientos Posteriores</h3></div>
+                                      
+                                   </div>
                                     </div>
                                     <div class="movil-tablet">
                                         <div class="row  d-flex justify-content-center" style="min-height: 250px;">
                                         
-                                            <div class="col-sm-12" style="height: 75px;margin-top:15px;">
-                                                <button class="btn btn-primary btn-hecho" onclick="showDataMovil(1)" data-toggle="collapse" data-target="#antecedentes" aria-expanded="false" aria-controls="collapseExample">Antecedentes Personales y Familiares</button>
+                                            <div class="col-sm-12  d-flex justify-content-center" style="height: 75px;margin-top:15px;">
+                                                <button class="btn btn-primary btn-hecho" onclick="showDataMovil(1)" data-toggle="collapse" data-target="#antecedentes" aria-expanded="false" aria-controls="collapseExample">INFORMACIÓN GENERAL DEL PACIENTE</button>
                                                 <div class="div-icon data1" id="data1" style="display:none">
                                                     <span class="icon-check "><i class="fa fa-check-circle text-success"></i></span>
                                                 </div>
                                             </div>
                                             <div class="col-sm-12 collapse"  id="antecedentes">
-                                                <div class="col-sm-12"><h3 class="subtitle">Antecedentes Personales y Familiares</h3></div>
+                                                <div class="col-sm-12"><h3 class="subtitle">INFORMACIÓN GENERAL DEL PACIENTE</h3></div>
                                                 @if($cuestionario->seccion==1)
                                                 <div class="col-sm-12 bodyData">
                                                     <div class="row">
@@ -238,6 +231,9 @@
                                                 @if($cuestionario->seccion!=1)
                                                     <div class="col-sm-12 bodyData">{!! $cuestionario->antecedentesPersonales !!}</div>
                                                 @endif
+                                                <div class="col-sm-3">
+                                                    <div class="line-custom-body"></div>
+                                                </div>
                                                 @if($cuestionario->seccion==2)
                                                 <div class="col-sm-12 bodyData">
                                                     <div class="row">
@@ -249,15 +245,9 @@
                                                 @if($cuestionario->seccion!=2)
                                                     <div class="col-sm-12 bodyData">{!! $cuestionario->antecedentesFamiliares !!}</div>
                                                 @endif
-                                            </div>
-                                            <div class="col-sm-12" style="height: 75px;margin-top:15px;">
-                                                <button class="btn btn-primary btn-hecho" onclick="showDataMovil(2)" data-toggle="collapse" data-target="#motivos" aria-expanded="false" aria-controls="collapseExample">Motivo De Consulta, Diagnóstico y Tratamiento Inicial</button>
-                                                <div class="div-icon data2" id="data2" style="display:none">
-                                                    <span class="icon-check "><i class="fa fa-check-circle text-success"></i></span>
+                                                <div class="col-sm-3">
+                                                    <div class="line-custom-body"></div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-12 collapse"  id="motivos">
-                                                <div class="col-sm-12"><h3 class="subtitle">Motivo De Consulta, Diagnóstico y Tratamiento Inicial</h3></div>
                                                 @if($cuestionario->seccion==3)
                                                 <div class="col-sm-12 bodyData">
                                                     <div class="row">
@@ -269,16 +259,10 @@
                                                 @if($cuestionario->seccion!=3)
                                                     <div class="col-sm-12 bodyData">{!! $cuestionario->motivoConsulta !!}</div>
                                                 @endif
-                                            </div>
-                                            <div class="col-sm-12" style="height: 75px;margin-top:15px;margin-bottom: 25px;">
-                                                <button class="btn btn-primary btn-hecho" onclick="showDataMovil(3)" data-toggle="collapse" data-target="#evolucion" aria-expanded="false" aria-controls="collapseExample">Evolución y Tratamientos Posteriores</button>
-                                                <div class="div-icon data3" id="data3" style="display:none">
-                                                    <span class="icon-check "><i class="fa fa-check-circle text-success"></i></span>
+                                                <div class="col-sm-3">
+                                                    <div class="line-custom-body"></div>
                                                 </div>
-                                            </div>
-                                            <div class="col-sm-12 collapse"  id="evolucion">
-                                                    <div class="col-sm-12"><h3 class="subtitle">Evolución y Tratamientos Posteriores</h3></div>
-                                                    @if($cuestionario->seccion==4)
+                                                @if($cuestionario->seccion==4)
                                                     <div class="col-sm-12 bodyData">
                                                         <div class="row">
                                                             <div class="col-sm-5"><img src="{{URL::asset($cuestionario->imagenSeccion)}}" style="width:100%;"></div>
@@ -289,7 +273,8 @@
                                                     @if($cuestionario->seccion!=4)
                                                         <div class="col-sm-12 bodyData">{!! $cuestionario->revision !!}</div>
                                                     @endif
-                                                </div>
+                                            </div>
+                                           
                                         </div>
                                     </div>
                             </div>
@@ -300,8 +285,8 @@
                                 <div class="row final" style="margin-top: 0%;">
                                     <div class="col-sm-12 "></div>
                                     <div class="col-sm-12 final-col"></div>
-                                    <div class="col-sm-12 d-flex justify-content-center" style="margin-top:25px;">
-                                    <button class="btn btn-primary btn-hecho" style="width:200px!important;"onclick="reinitSala()">Salir</button>
+                                    <div class="col-sm-12 d-flex justify-content-center" style="margin-top:0px;">
+                                    <img src="{{ URL::asset('assets/servier2.png'); }}" style="width:100%"/>
                                     </div>
                                 </div>
                             </div>
@@ -319,7 +304,7 @@
  <input type="hidden" value="{{$cuestionario->codigo}}" id="idCuestionario" />
  <audio src="{{ URL::asset('assets/acierto.mp3'); }}" id="correct"></audio>
  <audio src="{{ URL::asset('assets/incorrecto.mp3'); }}" id="incorrect"></audio>
- 
+ <img src="{{ URL::asset('assets/servier2.png'); }}" id="final" style="width:100%;display:none"/>
  <div class="modal fade" id="visor">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">

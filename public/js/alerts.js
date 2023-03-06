@@ -64,7 +64,7 @@ function alertTimeCorrect2(mensaje,callback) {
     icon: 'success',
     title:'',
     html:mensaje,
-    timer: 2500,
+    timer: 2000,
     showConfirmButton:false,
     timerProgressBar: false,
     willOpen: () => {
